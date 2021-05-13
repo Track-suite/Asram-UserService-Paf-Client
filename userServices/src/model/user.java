@@ -29,9 +29,9 @@ public class user {
 
 			if (type.equals("buyer") || type.equals("buyer")) {
 
-				output = "<table border='1'><tr><th>Buyer ID</th><th>Buyer Code</th><th>User Name</th>"
-						+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
-						+ "<th>phone</th>" + "<th>update</th>" + "<th>Delete</th></tr>";
+				output = "<table border='1'><tr><th>Buyer Code</th><th>User Name</th>" + "<th>Password</th>"
+						+ "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>" + "<th>phone</th>" + "<th>update</th>"
+						+ "<th>Delete</th></tr>";
 
 				String query = "select * from buyer";
 				Statement stmt = con.createStatement();
@@ -48,8 +48,7 @@ public class user {
 					String phone = rs.getString("phone");
 
 					// Add into the html table
-					output += "<tr><td>" + buyerID + "</td>";
-					output += "<td>" + buyerCode + "</td>";
+					output += "<tr><td>" + buyerCode + " </td>";
 					output += "<td>" + userName + "</td>";
 					output += "<td>" + password + "</td>";
 					output += "<td>" + email + "</td>";
@@ -57,10 +56,11 @@ public class user {
 					output += "<td>" + dob + "</td>";
 					output += "<td>" + phone + "</td>";
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-							+ "<td><form method='post' action='items.jsp'>"
-							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-							+ "<input name='itemID' type='hidden' value='" + buyerID + "'>" + "</form></td></tr>";
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary' data-userid='" + buyerID + "'></td>"
+							+ "<td><form method='post' action='demo.jsp'>"
+							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger' >"
+							+ "<input name='hidUserIDDelete' type='hidden' value='" + buyerID + "'>"
+							+ "</form></td></tr>";
 				}
 				con.close();
 				// Complete the html table
@@ -69,9 +69,9 @@ public class user {
 
 			if (type.equals("developer") || type.equals("Developer")) {
 
-				output = "<table border='1'><tr><th>Developer ID</th><th>developer Code</th><th>User Name</th>"
-						+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
-						+ "<th>phone</th>" + "<th>Description</th>" + "<th>update</th>" + "<th>Delete</th></tr>";
+				output = "<table border='1'><tr><th>developer Code</th><th>User Name</th>" + "<th>Password</th>"
+						+ "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>" + "<th>phone</th>"
+						 + "<th>update</th>" + "<th>Delete</th></tr>";
 
 				String query = "select * from developer";
 				Statement stmt = con.createStatement();
@@ -86,20 +86,20 @@ public class user {
 					String address = rs.getString("address");
 					String dob = rs.getString("dob");
 					String phone = rs.getString("phone");
-					String desc = rs.getString("desc");
+					
 
 					// Add into the html table
-					output += "<tr><td>" + developerID + "</td>";
-					output += "<td>" + developerCode + "</td>";
+					output += "<tr><td>"
+						 + developerCode + " </td>";
 					output += "<td>" + userName + "</td>";
 					output += "<td>" + password + "</td>";
 					output += "<td>" + email + "</td>";
 					output += "<td>" + address + "</td>";
 					output += "<td>" + dob + "</td>";
 					output += "<td>" + phone + "</td>";
-					output += "<td>" + desc + "</td>";
+					
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary' data-userid='" + developerID + "'></td>"
 							+ "<td><form method='post' action='items.jsp'>"
 							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
 							+ "<input name='itemID' type='hidden' value='" + developerID + "'>" + "</form></td></tr>";
@@ -111,9 +111,9 @@ public class user {
 
 			if (type.equals("investor") || type.equals("Investor")) {
 
-				output = "<table border='1'><tr><th>investor ID</th><th>investor Code</th><th>User Name</th>"
-						+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
-						+ "<th>phone</th>" + "<th>update</th>" + "<th>Delete</th></tr>";
+				output = "<table border='1'><tr><th>investor Code</th><th>User Name</th>" + "<th>Password</th>"
+						+ "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>" + "<th>phone</th>" + "<th>update</th>"
+						+ "<th>Delete</th></tr>";
 
 				String query = "select * from investor";
 				Statement stmt = con.createStatement();
@@ -130,8 +130,8 @@ public class user {
 					String phone = rs.getString("phone");
 
 					// Add into the html table
-					output += "<tr><td>" + investorID + "</td>";
-					output += "<td>" + investorCode + "</td>";
+					output += "<tr><td>"
+							 + investorCode + " </td>";
 					output += "<td>" + userName + "</td>";
 					output += "<td>" + password + "</td>";
 					output += "<td>" + email + "</td>";
@@ -140,7 +140,7 @@ public class user {
 					output += "<td>" + phone + "</td>";
 
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'data-userid='" + investorID + "'></td>"
 							+ "<td><form method='post' action='items.jsp'>"
 							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
 							+ "<input name='itemID' type='hidden' value='" + investorID + "'>" + "</form></td></tr>";
@@ -157,9 +157,9 @@ public class user {
 		return output;
 	}
 
-	/* method to inert the user */
+	/* method to insert the user */
 	public String insertUser(String usercode, String username, String password, String email, String address,
-			String dob, String phone, String type, String desc) {
+			String dob, String phone, String type) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -188,15 +188,17 @@ public class user {
 
 				preparedStmt.execute();
 				con.close();
-				output = " User Inserted successfully";
+				String newUser = readUsers("buyer");
+				output = "{\"status\":\"success\", \"data\": \"" +
+				newUser + "\"}";
 
 			}
 
 			if (type.equals("developer") || type.equals("Developer")) {
 
 				// query for inserting
-				String query = " insert into user.developer(`developerID`,`developerCode`,`userName`,`password`,`email`,`address`,`dob`,`phone`,`desc`)"
-						+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String query = " insert into user.developer(`developerID`,`developerCode`,`userName`,`password`,`email`,`address`,`dob`,`phone`)"
+						+ " values ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 				// binding values
@@ -208,12 +210,14 @@ public class user {
 				preparedStmt.setString(6, address);
 				preparedStmt.setString(7, dob);
 				preparedStmt.setString(8, phone);
-				preparedStmt.setString(9, desc);
+				
 				// execute the statement
 
 				preparedStmt.execute();
 				con.close();
-				output = "User Inserted successfully";
+				String newUser = readUsers("developer");
+				output = "{\"status\":\"success\", \"data\": \"" +
+				newUser + "\"}";
 			}
 
 			if (type.equals("Investor") || type.equals("investor")) {
@@ -238,23 +242,20 @@ public class user {
 
 				preparedStmt.execute();
 				con.close();
-				output = "User Inserted successfully";
 			}
+				
 
-		}
-
-		catch (Exception e) {
-			output = "Error while inserting the user.";
-			System.err.println(e.getMessage());
-		}
-
-		return output;
-
+	}catch (Exception e) {
+		output = "{\"status\":\"error\", \"data\":\"Error while updating the User.\"}";
+		System.err.println(e.getMessage());
+	}
+	return output;
+		
 	}
 
 	/* method to update the user */
 	public String updateUser(String type, String userID, String userName, String password, String email, String address,
-			String dob, String phone, String desc) {
+			String dob, String phone) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -278,12 +279,15 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Updated successfully";
+
+				String newUser = readUsers("buyer");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+
 			}
 
 			if (type.equals("developer") || type.equals("Developer")) {
 
-				String query = "UPDATE user.developer SET userName=?,password=?,email=?,address=?,dob=?,phone=?,developer.desc=? WHERE developerID=?";
+				String query = "UPDATE user.developer SET userName=?,password=?,email=?,address=?,dob=?,phone=?, WHERE developerID=?";
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 
 				preparedStmt.setString(1, userName);
@@ -292,12 +296,14 @@ public class user {
 				preparedStmt.setString(4, address);
 				preparedStmt.setString(5, dob);
 				preparedStmt.setString(6, phone);
-				preparedStmt.setString(7, desc);
-				preparedStmt.setInt(8, Integer.parseInt(userID));
+				//preparedStmt.setString(7, desc);
+				preparedStmt.setInt(7, Integer.parseInt(userID));
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Updated successfully";
+
+				String newUser = readUsers("developer");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 
 			}
 			if (type.equals("investor") || type.equals("Investor")) {
@@ -316,12 +322,13 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Updated successfully";
+				String newUser = readUsers("investor");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 
 			}
 
 		} catch (Exception e) {
-			output = "Error while updating the user.";
+			output = "{\"status\":\"error\", \"data\":\"Error while updating the User.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -346,7 +353,8 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "buyer deleted successfully";
+				String newUser = readUsers("Buyer");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 			}
 			if (type.equals("developer") || type.equals("Developer")) {
 
@@ -358,7 +366,9 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "developer deleted successfully";
+				String newUser = readUsers("developer");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+				
 			}
 			if (type.equals("investor") || type.equals("Investor")) {
 
@@ -370,10 +380,11 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "investor deleted successfully";
+				String newUser = readUsers("investor");
+				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 			}
 		} catch (Exception e) {
-			output = "Error while deleting the user.";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the User.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -407,7 +418,7 @@ public class user {
 					if ((username.equals(UserName))) {
 
 						output = "     Search Successful  !!           Detail of" + username + "Dispalyed";
-						output += "<br><br><table border='1'><tr><th>User ID</th><th>User Code</th><th>User Name</th>"
+						output += "<br><br><table border='1'><tr><th>User Code</th><th>User Name</th>"
 								+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
 								+ "<th>phone</th></tr>";
 						output += "<tr><td>" + userID + "</td>";
@@ -448,7 +459,7 @@ public class user {
 					if ((username.equals(UserName))) {
 
 						output = "     search Successful  !!           Detail of" + username + "Dispalyed";
-						output += "<br><br><table border='1'><tr><th>Developer ID</th><th>Developer Code</th><th>User Name</th>"
+						output += "<br><br><table border='1'><tr><th>Developer Code</th><th>User Name</th>"
 								+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
 								+ "<th>phone</th>" + "<th>description</th></tr>";
 						output += "<tr><td>" + userID + "</td>";
@@ -489,7 +500,7 @@ public class user {
 					if ((username.equals(UserName))) {
 
 						output = "     search Successful  !!            Detail of" + username + "Dispalyed";
-						output += "<br><br><table border='1'><tr><th>Investor ID</th><th>Investor Code</th><th>User Name</th>"
+						output += "<br><br><table border='1'><tr><th>Investor Code</th><th>User Name</th>"
 								+ "<th>Password</th>" + "<th> Gmail</th>" + "<th>Address</th>" + "<th>DOB</th>"
 								+ "<th>phone</th>" + "<th>profile Information</th></tr>";
 						output += "<tr><td>" + userID + "</td>";

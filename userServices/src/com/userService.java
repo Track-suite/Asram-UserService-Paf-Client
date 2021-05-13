@@ -41,7 +41,7 @@ public class userService {
 
 	{
 
-		output = userObj.insertUser(userCode, userName, password, email, address, dob, phone, type, desc);
+		output = userObj.insertUser(userCode, userName, password, email, address, dob, phone, type);
 		return output;
 	}
 
@@ -62,9 +62,9 @@ public class userService {
 		String address = userObject.get("address").getAsString();
 		String dob = userObject.get("dob").getAsString();
 		String phone = userObject.get("phone").getAsString();
-		String desc = userObject.get("desc").getAsString();
+		//String desc = userObject.get("desc").getAsString();
 
-		String output = userObj.updateUser(type, userID, userName, password, email, address, dob, phone, desc);
+		String output = userObj.updateUser(type, userID, userName, password, email, address, dob, phone);
 		return output;
 	}
 
