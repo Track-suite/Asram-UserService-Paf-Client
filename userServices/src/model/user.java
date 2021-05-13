@@ -57,7 +57,7 @@ public class user {
 					output += "<td>" + phone + "</td>";
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary' data-userid='" + buyerID + "'></td>"
-							+ "<td><form method='post' action='demo.jsp'>"
+							+ "<td><form method='post' action='UserMangement.jsp'>"
 							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger' >"
 							+ "<input name='hidUserIDDelete' type='hidden' value='" + buyerID + "'>"
 							+ "</form></td></tr>";
@@ -99,8 +99,8 @@ public class user {
 					output += "<td>" + phone + "</td>";
 					
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary' data-userid='" + developerID + "'></td>"
-							+ "<td><form method='post' action='items.jsp'>"
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary' data-userid='" + developerID + "'></td>"
+							+ "<td><form method='post' action='UserMangement.jsp'>"
 							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
 							+ "<input name='itemID' type='hidden' value='" + developerID + "'>" + "</form></td></tr>";
 				}
@@ -140,8 +140,8 @@ public class user {
 					output += "<td>" + phone + "</td>";
 
 					// buttons
-					output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'data-userid='" + investorID + "'></td>"
-							+ "<td><form method='post' action='items.jsp'>"
+					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary'data-userid='" + investorID + "'></td>"
+							+ "<td><form method='post' action='UserMangement.jsp'>"
 							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
 							+ "<input name='itemID' type='hidden' value='" + investorID + "'>" + "</form></td></tr>";
 				}
@@ -188,9 +188,9 @@ public class user {
 
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("buyer");
+				/*String newUser = readUsers("buyer");
 				output = "{\"status\":\"success\", \"data\": \"" +
-				newUser + "\"}";
+				newUser + "\"}";*/
 
 			}
 
@@ -215,9 +215,9 @@ public class user {
 
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("developer");
+				/*String newUser = readUsers("developer");
 				output = "{\"status\":\"success\", \"data\": \"" +
-				newUser + "\"}";
+				newUser + "\"}";*/
 			}
 
 			if (type.equals("Investor") || type.equals("investor")) {
@@ -243,7 +243,9 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 			}
-				
+			String newUser = readUsers("type");
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newUser + "\"}";	
 
 	}catch (Exception e) {
 		output = "{\"status\":\"error\", \"data\":\"Error while updating the User.\"}";
@@ -353,8 +355,7 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("Buyer");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+			
 			}
 			if (type.equals("developer") || type.equals("Developer")) {
 
@@ -366,8 +367,7 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("developer");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+			
 				
 			}
 			if (type.equals("investor") || type.equals("Investor")) {
@@ -380,16 +380,17 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("investor");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+				
 			}
+			String newUser = readUsers("type");
+			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\":\"Error while deleting the User.\"}";
 			System.err.println(e.getMessage());
 		}
 		return output;
 	}
-
+//Search Function
 	public String userSearch(String username, String type) {
 		String output = "";
 		try {

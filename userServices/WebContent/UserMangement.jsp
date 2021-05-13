@@ -180,7 +180,8 @@ if (request.getParameter("itemID") != null) {
 			</div>
 		</div>
 		<br>
-	<h1 class="m-3">Buyer Table</h1>
+		
+		<h1 class="m-3">Buyer Table</h1>
 	<div id="divItemsGrid"  class="col-12">
 		
 		<div id="divItemsGrid" class="col-15">
@@ -210,6 +211,7 @@ if (request.getParameter("itemID") != null) {
 					%>
 				</div>
 	</div>
+	
 
 </body>
 </html>
