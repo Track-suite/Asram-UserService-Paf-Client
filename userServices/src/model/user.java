@@ -243,7 +243,7 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 			}
-			String newUser = readUsers("type");
+			String newUser = readUsers(type);
 			output = "{\"status\":\"success\", \"data\": \"" +
 			newUser + "\"}";	
 
@@ -282,9 +282,7 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 
-				String newUser = readUsers("buyer");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
-
+				
 			}
 
 			if (type.equals("developer") || type.equals("Developer")) {
@@ -304,8 +302,7 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 
-				String newUser = readUsers("developer");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+				
 
 			}
 			if (type.equals("investor") || type.equals("Investor")) {
@@ -324,10 +321,11 @@ public class user {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				String newUser = readUsers("investor");
-				output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
+				
 
 			}
+			String newUser = readUsers(type);
+			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\":\"Error while updating the User.\"}";
@@ -358,7 +356,7 @@ public class user {
 				con.close();
 			
 		
-			String newUser = readUsers("type");
+			String newUser = readUsers("buyer");
 			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\":\"Error while deleting the User.\"}";
