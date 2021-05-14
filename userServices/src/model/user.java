@@ -358,7 +358,7 @@ public class user {
 				con.close();
 			
 		
-			String newUser = readUsers("buyer");
+			String newUser = readUsers("type");
 			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\":\"Error while deleting the User.\"}";
