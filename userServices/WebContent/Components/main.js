@@ -52,7 +52,7 @@ function validateUserForm() {
 		return "Insert User Code.";
 	}
 	// Type
-	if ($("#SelectType").val() == "0") {
+	if ($("#SelectType").val() == "") {
 		return "Select Type.";
 	}
 	// Email
