@@ -15,7 +15,7 @@ if (request.getParameter("userId") != null) {
 //Delete item----------------------------------
 if (request.getParameter("itemID") != null) {
 	user UserObj = new user();
-	String stsMsg = UserObj.deleteUser(request.getParameter("type"), request.getParameter("userID"));
+	String stsMsg = UserObj.deleteUser( request.getParameter("userID"));
 	session.setAttribute("statusMsg", stsMsg);
 }
 %>
