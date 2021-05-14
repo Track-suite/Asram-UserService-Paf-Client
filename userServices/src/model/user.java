@@ -357,32 +357,7 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 			
-			//}
-			/*if (type.equals("developer") || type.equals("Developer")) {
-
-				// create a prepared statement
-				String query = "delete from developer where developerID=?";
-				PreparedStatement preparedStmt = con.prepareStatement(query);
-				// binding values
-				preparedStmt.setInt(1, Integer.parseInt(userID));
-				// execute the statement
-				preparedStmt.execute();
-				con.close();
-			
-				
-			}
-			if (type.equals("investor") || type.equals("Investor")) {
-
-				// create a prepared statement
-				String query = "delete from investor where investorID=?";
-				PreparedStatement preparedStmt = con.prepareStatement(query);
-				// binding values
-				preparedStmt.setInt(1, Integer.parseInt(userID));
-				// execute the statement
-				preparedStmt.execute();
-				con.close();
-				
-			}*/
+		
 			String newUser = readUsers("buyer");
 			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 		} catch (Exception e) {
