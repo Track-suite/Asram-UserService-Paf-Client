@@ -118,7 +118,7 @@ $(document).on("click", ".btnRemove", function(event) {
 	$.ajax({
 		url : "userAPI",
 		type : "DELETE",
-		data : "userID=" + $(this).data("userID"),
+		data : "userID=" + $(this).data("userid"),
 		dataType : "text",
 		complete : function(response, status) {
 			onItemDeleteComplete(response.responseText, status);

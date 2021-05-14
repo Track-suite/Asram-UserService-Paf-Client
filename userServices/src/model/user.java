@@ -57,9 +57,9 @@ public class user {
 					output += "<td>" + phone + "</td>";
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary' data-userid='" + buyerID + "'></td>"
-							+ "<td><form method='post' action='UserMangement.jsp'>"
-							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger' >"
-							+ "<input name='hidUserIDDelete' type='hidden' value='" + buyerID + "'>"
+							+ "<td>"
+							+ "<input  name='btnRemove' type='submit' value='Remove'class='btnRemove btn btn-danger' data-userid='" + buyerID + "'>"
+							
 							+ "</form></td></tr>";
 				}
 				con.close();
@@ -100,9 +100,9 @@ public class user {
 					
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary' data-userid='" + developerID + "'></td>"
-							+ "<td><form method='post' action='UserMangement.jsp'>"
-							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-							+ "<input name='itemID' type='hidden' value='" + developerID + "'>" + "</form></td></tr>";
+							+ "<td>"
+							+ "<input name='btnRemove' type='submit' value='Remove'class='btnRemove btn btn-danger' data-userid='" + developerID + "'>"
+							 + "</form></td></tr>";
 				}
 				con.close();
 				// Complete the html table
@@ -141,9 +141,9 @@ public class user {
 
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'class='btnUpdate btn btn-secondary'data-userid='" + investorID + "'></td>"
-							+ "<td><form method='post' action='UserMangement.jsp'>"
-							+ "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-							+ "<input name='itemID' type='hidden' value='" + investorID + "'>" + "</form></td></tr>";
+							+ "<td><form method= 'post' action= 'UserMangement.jsp'>"
+							+ "<input name='btnRemove' type='submit' value='Remove'class='btnRemove btn btn-danger' data-userid='" + investorID + "'>"
+						 + "</form></td></tr>";
 				}
 				con.close();
 				// Complete the html table
@@ -337,7 +337,8 @@ public class user {
 	}
 
 	/* method to delete the user */
-	public String deleteUser(String type, String userID) {
+	//public String deleteUser(String type, String userID)
+	public String deleteUser( String userID) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -345,7 +346,7 @@ public class user {
 				return "Error while connecting to the database for deleting.";
 			}
 
-			if (type.equals("buyer") || type.equals("buyer")) {
+			/*if (type.equals("buyer") || type.equals("buyer")) {*/
 
 				// create a prepared statement
 				String query = "delete from buyer where userID=?";
@@ -356,8 +357,8 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 			
-			}
-			if (type.equals("developer") || type.equals("Developer")) {
+			//}
+			/*if (type.equals("developer") || type.equals("Developer")) {
 
 				// create a prepared statement
 				String query = "delete from developer where developerID=?";
@@ -381,8 +382,8 @@ public class user {
 				preparedStmt.execute();
 				con.close();
 				
-			}
-			String newUser = readUsers("type");
+			}*/
+			String newUser = readUsers("buyer");
 			output = "{\"status\":\"success\", \"data\": \"" + newUser + "\"}";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\":\"Error while deleting the User.\"}";

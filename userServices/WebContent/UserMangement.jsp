@@ -179,7 +179,7 @@ if (request.getParameter("itemID") != null) {
 					<div id="alertError" class="alert alert-danger"></div>
 			</div>
 		</div>
-		<br>
+		<br><br>
 		
 		<h1 class="m-3">Buyer Table</h1>
 	<div id="divItemsGrid"  class="col-12">

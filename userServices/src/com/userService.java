@@ -78,7 +78,7 @@ public class userService {
 		String type = doc.select("type").text();
 		// Read the value from the element <userID>
 		String userID = doc.select("userID").text();
-		String output = userObj.deleteUser(type, userID);
+		String output = userObj.deleteUser( userID);
 		return output;
 	}
 
