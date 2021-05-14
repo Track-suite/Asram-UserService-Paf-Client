@@ -289,7 +289,7 @@ public class user {
 
 			if (type.equals("developer") || type.equals("Developer")) {
 
-				String query = "UPDATE user.developer SET userName=?,password=?,email=?,address=?,dob=?,phone=?, WHERE developerID=?";
+				String query = "UPDATE user.developer SET userName=?,password=?,email=?,address=?,dob=?,phone=? WHERE developerID=?";
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 
 				preparedStmt.setString(1, userName);
@@ -320,7 +320,7 @@ public class user {
 				preparedStmt.setString(5, dob);
 				preparedStmt.setString(6, phone);
 
-				preparedStmt.setInt(8, Integer.parseInt(userID));
+				preparedStmt.setInt(7, Integer.parseInt(userID));
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
