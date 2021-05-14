@@ -98,12 +98,12 @@ function onItemSaveComplete(response, status) {
 		$("#alertError").show();
 	}
 
-	$("#hidItemIDSave").val("");
+	$("#hidUserIDSave").val("");
 	$("#formUser")[0].reset();
 }
 // Update====================
 $(document).on("click", ".btnUpdate", function(event) {
-	$("#hidItemIDSave").val($(this).data("userID"));
+	$("#hidUserIDSave").val($(this).data("userID"));
 	$("#txtUserCode").val($(this).closest("tr").find('td:eq(0)').text());
 	$("#txtUsername").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#txtPassword").val($(this).closest("tr").find('td:eq(2)').text());
@@ -147,46 +147,4 @@ function onItemDeleteComplete(response, status) {
 	}
 }
 
-function getUserCard(name, usercode, type, email, password, address, dob, phone) {
 
-	var typeno = "";
-
-	switch (type) {
-	case "1":
-		typeno = "buyer";
-		break;
-	case "2":
-		typeno = "investor";
-		break;
-	case "3":
-		typeno = "developer";
-		break;
-
-	}
-
-	var user = "";
-	user += "<div class=\"student card bg-light m-2\""
-			+ "style=\"max-width: 20rem; float: left;\">";
-	user += "<div class=\"card-body\">";
-	user += " Details of" + " " + typeno;
-	user += "<br>";
-	user += name + ",";
-	user += "<br>";
-	user += "Code" + " " + usercode + ",";
-	user += "<br>";
-	user += "Email:" + " " + email + ",";
-	user += "<br>";
-	user += "Password:" + " " + password + ",";
-	user += "<br>";
-	user += "Home Address:" + " " + address + ",";
-	user += "<br>";
-	user += "Date of Birth:" + " " + dob + ",";
-	user += "<br>";
-	user += "Phone:" + " " + phone;
-
-	user += "</div>";
-	user += "<input type=\"button\" value=\"Remove\""
-			+ "class=\"btn btn-danger remove\">";
-	user += "</div>";
-	return user;
-}
